@@ -48,35 +48,53 @@ Procesamiento digital de imágenes: cómo una fotografía se representa como una
 ## 🛠️ Requisitos e Instalación
 
 ### Dependencias Principales
-* **NumPy** (`numpy`): cálculo numérico y arreglos multidimensionales.
-* **Matplotlib** (`matplotlib`): lectura, procesamiento y visualización de imágenes.
-* **Jupyter** (`notebook` / `jupyterlab`): ejecución de libretas interactivas.
+* **NumPy**, **Matplotlib** y **Pandas**: arreglos, gráficos y tabla de píxeles.
+* **JupyterLab** e **ipykernel**: apertura y ejecución de los notebooks.
+* **nbformat** y **nbclient**: validación y ejecución completa desde un kernel limpio.
+
+Las versiones directas verificadas con Python 3.12 están en `requirements.txt`.
 
 ### Configuración del Entorno
 
-1. **Acceder al directorio:**
-   ```bash
-   cd numpy
-   ```
+Desde la carpeta del repositorio, crea el entorno y actívalo:
 
-2. **Activar el entorno virtual (`.venv`):**
-   ```bash
-   # macOS/Linux
-   source .venv/bin/activate
+```powershell
+# Windows / PowerShell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -c "import sys; print(sys.executable)"
+python -m pip install -r requirements.txt
+python -m jupyterlab
+```
 
-   # Windows
-   .venv\Scripts\activate
-   ```
+```bash
+# macOS / Linux
+python3 -m venv .venv
+source .venv/bin/activate
+python -c "import sys; print(sys.executable)"
+python -m pip install -r requirements.txt
+python -m jupyterlab
+```
 
-3. **Instalar dependencias** (entorno nuevo o limpio):
-   ```bash
-   pip install numpy matplotlib notebook
-   ```
+Si PowerShell restringe la activación, usa directamente
+`.\.venv\Scripts\python.exe` para esos comandos de Python. No hace falta cambiar
+la política global. Selecciona el kernel de `.venv` en JupyterLab y ejecuta los
+notebooks desde la carpeta que contiene `beagle.jpg`.
 
-4. **Iniciar Jupyter:**
-   ```bash
-   jupyter notebook
-   ```
+### Checkpoint 3: trabajo y comprobaciones
+
+Se reejecutaron desde cero las 6 celdas de código de `1_numpy_avanzado.ipynb` y
+las 11 de `2_ejercicios.ipynb`, sin errores. Las soluciones de C2 se conservaron;
+se hizo visible el tipo `ndarray` y se añadieron comprobaciones de RGB, medias por
+canal y correspondencia entre píxeles y DataFrame. Se guardaron las seis figuras
+y la tabla HTML de sus primeras cinco filas.
+
+La imagen incluida mide **1024 × 1024**, tiene tres canales `uint8` y su píxel
+`[0, 0]` es `[29, 46, 10]`. Los valores de la imagen didáctica del temario
+dependen de ese otro archivo. La media global de esta imagen es
+`119.40487066904704`; el canal verde tiene la mayor media
+(`145.15760898590088`). El DataFrame conserva sus **1,048,576 píxeles** en tres
+columnas. No se requiere descargar un CSV para los ejercicios de estos notebooks.
 
 ---
 
